@@ -89,6 +89,90 @@ body{min-height:100vh;}
 }
 .icon-btn:active{ transform:scale(0.94); }
 
+/* ---------- stat row ---------- */
+.stat-row{ display:flex; justify-content:center; gap:22px; margin-top:22px; flex-wrap:wrap; }
+.stat{ text-align:center; }
+.stat .num{ font-family:'Fraunces',serif; font-size:22px; font-weight:700; color:var(--gold); }
+.stat .lab{ font-size:9.5px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-top:2px; }
+
+/* ---------- Section generic ---------- */
+.sec{ padding:34px 22px 8px; }
+.sec-eyebrow{
+  font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.18em;
+  color:var(--teal); text-transform:uppercase; text-align:center;
+}
+.sec-title{
+  font-family:'Fraunces',serif; font-size:24px; font-weight:600; text-align:center;
+  margin-top:8px; line-height:1.2;
+}
+.sec-sub{ color:var(--muted); font-size:13.5px; text-align:center; margin-top:10px; max-width:440px; margin-left:auto; margin-right:auto; line-height:1.55;}
+
+.domain-grid{ display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:20px; }
+.domain-pill{
+  background:var(--ink-2); border:1px solid var(--line); border-radius:13px;
+  padding:13px 12px; font-size:12.5px; font-weight:600; text-align:center;
+  display:flex; align-items:center; justify-content:center; min-height:50px;
+}
+
+.who-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:20px; }
+.who-card{
+  background:var(--ink-2); border:1px solid var(--line); border-radius:14px;
+  padding:16px 12px; text-align:center;
+}
+.who-card .ic{ font-size:24px; margin-bottom:8px; }
+.who-card .t{ font-size:12px; font-weight:600; line-height:1.35; }
+
+.hi-list{ display:flex; flex-direction:column; gap:10px; margin-top:18px; }
+.hi-row{
+  display:flex; gap:13px; align-items:flex-start;
+  background:var(--ink-2); border:1px solid var(--line); border-radius:13px; padding:14px 15px;
+}
+.hi-row .ic{ font-size:18px; flex-shrink:0; margin-top:1px; }
+.hi-row .tt{ font-size:14px; font-weight:700; }
+.hi-row .dd{ font-size:12.5px; color:var(--muted); margin-top:3px; line-height:1.45; }
+
+.mentor-big{
+  margin-top:20px; background:var(--ink-2); border:1px solid var(--line); border-radius:18px;
+  padding:24px 20px; text-align:center;
+}
+.mentor-big .av{
+  width:78px; height:78px; border-radius:50%; margin:0 auto 14px;
+  background:radial-gradient(circle at 35% 30%, #2a3361, var(--ink-3));
+  border:1.5px solid var(--gold); display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces',serif; font-weight:700; color:var(--gold); font-size:26px;
+}
+.mentor-big .mn{ font-family:'Fraunces',serif; font-size:19px; font-weight:600; }
+.mentor-big .mt{ font-size:12.5px; color:var(--gold-soft); margin-top:5px; }
+.mentor-big .creds{ display:flex; gap:7px; justify-content:center; flex-wrap:wrap; margin-top:12px;}
+.cred-chip{
+  font-size:10px; font-family:'JetBrains Mono',monospace; letter-spacing:0.03em;
+  padding:4px 9px; border-radius:20px; border:1px solid var(--line); color:var(--teal);
+}
+.mentor-big .quote{
+  font-family:'Fraunces',serif; font-style:italic; font-size:14px; color:var(--paper);
+  margin-top:16px; line-height:1.5; opacity:0.9;
+}
+
+.diff-grid{ display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:20px; }
+.diff-card{
+  background:var(--ink-2); border:1px solid var(--line); border-radius:13px; padding:14px 13px;
+}
+.diff-card .tt{ font-size:12.5px; font-weight:700; }
+.diff-card .dd{ font-size:11px; color:var(--muted); margin-top:5px; line-height:1.4; }
+
+.cta-band{
+  margin:32px 22px; background:linear-gradient(135deg, rgba(212,175,106,0.10), rgba(45,212,191,0.06));
+  border:1px solid var(--line); border-radius:18px; padding:26px 20px; text-align:center;
+}
+.cta-band .tt{ font-family:'Fraunces',serif; font-size:20px; font-weight:600; }
+.cta-band .dd{ font-size:13px; color:var(--muted); margin-top:8px; }
+
+.locked-note{
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  margin-top:14px; font-size:11.5px; color:var(--muted);
+  font-family:'JetBrains Mono',monospace; letter-spacing:0.02em;
+}
+
 /* ---------- Hero ---------- */
 .hero{ padding:18px 22px 10px; text-align:center; position:relative; }
 .orbit-stage{
@@ -350,7 +434,11 @@ footer.f{ text-align:center; padding:10px 22px 50px; color:#4b5374; font-size:11
 <div class="view active" id="view-landing">
   <div class="topbar">
     <div class="brand">
-      <div class="crest">SZK</div>
+      <svg class="crest" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="38" height="38" style="border:none;background:none;">
+        <path d="M32 4 L56 14 V30 C56 46 46 56 32 60 C18 56 8 46 8 30 V14 Z" fill="#10172E" stroke="#D4AF6A" stroke-width="2"/>
+        <path d="M32 11 L49 18.5 V30 C49 42 41.5 49.5 32 53 C22.5 49.5 15 42 15 30 V18.5 Z" fill="none" stroke="#2DD4BF" stroke-width="1.4" opacity="0.85"/>
+        <path d="M22 32 L29 39 L43 23" stroke="#D4AF6A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
       <div class="brand-name"><b>CPHQ</b> · Pro-Frontier</div>
     </div>
     <div class="icon-btn" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</div>
@@ -370,21 +458,109 @@ footer.f{ text-align:center; padding:10px 22px 50px; color:#4b5374; font-size:11
     <h1 class="headline">Twenty minds, <em>one</em><br>frontier of quality.</h1>
     <p class="subtext">A live, instructor-led CPHQ preparation cohort for healthcare quality professionals — built for focus, discipline, and global-standard rigor.</p>
     <div class="mentor-line"><span class="dot"></span> Mentor — Dr. Shama Zakir Khan</div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">500+</div><div class="lab">Trained</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lab">Pass Rate</div></div>
+      <div class="stat"><div class="num">4.9/5</div><div class="lab">Alumni Rating</div></div>
+      <div class="stat"><div class="num">30+</div><div class="lab">Countries</div></div>
+    </div>
   </div>
 
   <div class="cta-zone">
     <button class="btn btn-primary" onclick="openLogin()">
       🔐 Student Login
     </button>
-    <button class="btn btn-ghost" onclick="document.getElementById('aboutSec').scrollIntoView({behavior:'smooth'})">
-      View Class Schedule
-    </button>
   </div>
+  <div class="locked-note">🔒 Class link is visible only after sign-in</div>
 
   <div class="trust-strip">
     <div class="trust-item">JCI · PHC Aligned</div>
     <div class="trust-item">Live Zoom Sessions</div>
     <div class="trust-item">20 Seats / Cohort</div>
+  </div>
+
+  <!-- Domains -->
+  <div class="sec">
+    <div class="sec-eyebrow">Content Outline</div>
+    <div class="sec-title">Core CPHQ Knowledge Domains</div>
+    <div class="sec-sub">Structured around the official CPHQ exam content outline.</div>
+    <div class="domain-grid">
+      <div class="domain-pill">Quality Leadership & Integration</div>
+      <div class="domain-pill">Performance & Process Improvement</div>
+      <div class="domain-pill">Health Data Analytics</div>
+      <div class="domain-pill">Patient Safety</div>
+      <div class="domain-pill">Regulatory & Accreditation</div>
+      <div class="domain-pill">Education & Training</div>
+    </div>
+  </div>
+
+  <!-- Who for -->
+  <div class="sec">
+    <div class="sec-eyebrow">Who This Is For</div>
+    <div class="sec-title">Built for Quality-Minded Leaders</div>
+    <div class="who-grid">
+      <div class="who-card"><div class="ic">🏥</div><div class="t">Quality & Patient Safety Officers</div></div>
+      <div class="who-card"><div class="ic">📊</div><div class="t">Data & Performance Analysts</div></div>
+      <div class="who-card"><div class="ic">🎖️</div><div class="t">Accreditation Coordinators</div></div>
+      <div class="who-card"><div class="ic">🩺</div><div class="t">Nurses & Clinical Leads</div></div>
+      <div class="who-card"><div class="ic">📋</div><div class="t">Hospital Administrators</div></div>
+      <div class="who-card"><div class="ic">🌍</div><div class="t">Aspiring Global QM Leaders</div></div>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <div class="sec">
+    <div class="sec-eyebrow">Course Highlights</div>
+    <div class="sec-title">Designed for Working Professionals</div>
+    <div class="hi-list">
+      <div class="hi-row"><div class="ic">🎙️</div><div><div class="tt">Live Interactive Sessions</div><div class="dd">Real-time teaching, four days a week.</div></div></div>
+      <div class="hi-row"><div class="ic">🧩</div><div><div class="tt">Real Quality Case Studies</div><div class="dd">Drawn from JCI, PHC and SHC accreditation cycles.</div></div></div>
+      <div class="hi-row"><div class="ic">📝</div><div><div class="tt">Module-Based Assessments</div><div class="dd">One test day per completed module, recordings shared for any missed session.</div></div></div>
+      <div class="hi-row"><div class="ic">🎬</div><div><div class="tt">Recordings on Demand</div><div class="dd">Never lose pace — catch up on anything you missed.</div></div></div>
+      <div class="hi-row"><div class="ic">🎯</div><div><div class="tt">Exam-Ready Strategy</div><div class="dd">Tactics and pacing built specifically for the CPHQ format.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Mentor -->
+  <div class="sec">
+    <div class="sec-eyebrow">Meet Your Mentor</div>
+    <div class="mentor-big">
+      <div class="av">SZK</div>
+      <div class="mn">Dr. Shama Zakir Khan</div>
+      <div class="mt">Head of Patient Safety, Quality & Accreditation</div>
+      <div class="creds">
+        <span class="cred-chip">CPHQ</span>
+        <span class="cred-chip">CPPS</span>
+        <span class="cred-chip">CPHRM</span>
+        <span class="cred-chip">BDS · MBA</span>
+        <span class="cred-chip">LSSBB · FISQua</span>
+      </div>
+      <div class="quote">"Transforming healthcare systems through quality, accreditation, and patient safety excellence."</div>
+    </div>
+  </div>
+
+  <!-- Differentiators -->
+  <div class="sec">
+    <div class="sec-eyebrow">What Makes This Different</div>
+    <div class="sec-title">More Than a Prep Course</div>
+    <div class="diff-grid">
+      <div class="diff-card"><div class="tt">Personal Mentoring</div><div class="dd">One-on-one guidance until you clear the exam.</div></div>
+      <div class="diff-card"><div class="tt">Repeat the Batch</div><div class="dd">Re-attend within 6 months at no extra cost.</div></div>
+      <div class="diff-card"><div class="tt">Session Recordings</div><div class="dd">Catch up anytime on missed classes.</div></div>
+      <div class="diff-card"><div class="tt">Mock Exam Practice</div><div class="dd">Full-length simulations under real exam pressure.</div></div>
+      <div class="diff-card"><div class="tt">High-Yield Notes</div><div class="dd">Concise material focused on what matters.</div></div>
+      <div class="diff-card"><div class="tt">Doubt-Clearing Support</div><div class="dd">Expert clarity, whenever you need it.</div></div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="tt">Already enrolled?</div>
+    <div class="dd">Sign in to view your live class schedule and join link.</div>
+  </div>
+
+  <div class="cta-zone" style="padding-top:0;">
+    <button class="btn btn-primary" onclick="openLogin()">🔐 Student Login</button>
   </div>
 
   <div class="wrap" id="aboutSec" style="padding-bottom:50px;">
@@ -410,14 +586,18 @@ footer.f{ text-align:center; padding:10px 22px 50px; color:#4b5374; font-size:11
     </div>
   </div>
 
-  <footer class="f">OMAC Developers · Pro-Frontier Academy © 2026</footer>
+  <footer class="f">ProFrontier International Online Academy · CPHQ Module © 2026<br><span style="color:var(--muted);">Web Developed by <b style="color:var(--gold-soft);">OMAC</b></span></footer>
 </div>
 
 <!-- ============ VIEW: DASHBOARD ============ -->
 <div class="view" id="view-dash">
   <div class="topbar">
     <div class="brand">
-      <div class="crest">SZK</div>
+      <svg class="crest" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="38" height="38" style="border:none;background:none;">
+        <path d="M32 4 L56 14 V30 C56 46 46 56 32 60 C18 56 8 46 8 30 V14 Z" fill="#10172E" stroke="#D4AF6A" stroke-width="2"/>
+        <path d="M32 11 L49 18.5 V30 C49 42 41.5 49.5 32 53 C22.5 49.5 15 42 15 30 V18.5 Z" fill="none" stroke="#2DD4BF" stroke-width="1.4" opacity="0.85"/>
+        <path d="M22 32 L29 39 L43 23" stroke="#D4AF6A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
       <div class="brand-name"><b>CPHQ</b> · Pro-Frontier</div>
     </div>
     <div class="icon-btn" onclick="logout()">⎋</div>
@@ -485,7 +665,7 @@ footer.f{ text-align:center; padding:10px 22px 50px; color:#4b5374; font-size:11
     <button class="logout-link" onclick="logout()">Sign out</button>
   </div>
 
-  <footer class="f">OMAC Developers · Pro-Frontier Academy © 2026</footer>
+  <footer class="f">ProFrontier International Online Academy · CPHQ Module © 2026<br><span style="color:var(--muted);">Web Developed by <b style="color:var(--gold-soft);">OMAC</b></span></footer>
 </div>
 
 <!-- ============ MODAL: LOGIN ============ -->
