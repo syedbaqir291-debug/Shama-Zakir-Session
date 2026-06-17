@@ -548,6 +548,76 @@ body{min-height:100vh;}
 .roster-row span:last-child{ color:var(--muted); }
 
 footer.f{ text-align:center; padding:10px 22px 50px; color:#4b5374; font-size:11.5px; font-family:'JetBrains Mono',monospace;}
+
+/* ---------- Modules Hub ---------- */
+.module-list{ padding:18px 22px 40px; display:flex; flex-direction:column; gap:10px; }
+.module-card{
+  background:var(--ink-2); border:1px solid var(--line); border-radius:16px;
+  padding:16px 17px; display:flex; align-items:center; gap:14px; cursor:pointer;
+  transition:border-color .2s ease;
+}
+.module-card:active{ transform:scale(0.98); }
+.module-card.soon{ cursor:default; opacity:0.55; }
+.module-card .m-num{
+  width:42px; height:42px; border-radius:12px; flex-shrink:0;
+  background:rgba(212,175,106,0.08); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces',serif; font-weight:700; color:var(--gold); font-size:16px;
+}
+.module-card.soon .m-num{ color:var(--muted); background:rgba(255,255,255,0.02); }
+.module-card .m-body{ flex:1; min-width:0; }
+.module-card .m-title{ font-size:14.5px; font-weight:700; }
+.module-card .m-sub{ font-size:12px; color:var(--muted); margin-top:3px; line-height:1.4; }
+.module-card .m-tag{
+  font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.05em;
+  padding:3px 8px; border-radius:20px; flex-shrink:0; text-transform:uppercase;
+}
+.module-card .m-tag.live{ color:var(--teal); border:1px solid rgba(45,212,191,0.3); background:rgba(45,212,191,0.06); }
+.module-card .m-tag.soon{ color:var(--muted); border:1px solid var(--line); }
+
+/* Module detail */
+.module-tabs{ display:flex; gap:8px; padding:16px 22px 6px; }
+.m-tab{
+  flex:1; text-align:center; padding:11px 6px; border-radius:11px;
+  background:var(--ink-2); border:1px solid var(--line); color:var(--muted);
+  font-size:12.5px; font-weight:700; cursor:pointer; transition:all .2s ease;
+}
+.m-tab.active{ color:var(--ink); background:linear-gradient(135deg, var(--gold), #C79A4F); border-color:transparent; }
+
+.m-pane{ display:none; padding:16px 22px 40px; }
+.m-pane.active{ display:block; }
+
+.video-row{
+  background:var(--ink-2); border:1px solid var(--line); border-radius:14px;
+  margin-bottom:10px; overflow:hidden;
+}
+.video-row-head{
+  display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer;
+}
+.video-row-head .v-ic{
+  width:34px; height:34px; border-radius:10px; flex-shrink:0;
+  background:rgba(45,212,191,0.1); color:var(--teal); display:flex;
+  align-items:center; justify-content:center; font-size:14px;
+}
+.video-row-head .v-tt{ font-size:13.5px; font-weight:700; flex:1; }
+.video-row-head .v-arrow{ color:var(--muted); font-size:14px; transition:transform .2s ease; }
+.video-row.open .video-row-head .v-arrow{ transform:rotate(90deg); }
+.video-frame-wrap{ display:none; padding:0 12px 14px; }
+.video-row.open .video-frame-wrap{ display:block; }
+.video-frame-wrap .ar{ position:relative; width:100%; padding-top:56.25%; border-radius:10px; overflow:hidden; background:#000; }
+.video-frame-wrap .ar iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+.slides-card{ background:var(--ink-2); border:1px solid var(--line); border-radius:16px; padding:16px; }
+.slides-card .ar{ position:relative; width:100%; padding-top:61.3%; border-radius:12px; overflow:hidden; background:#000; }
+.slides-card .ar iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.slides-note{ font-size:11.5px; color:var(--muted); margin-top:10px; text-align:center; }
+
+.quiz-launch-card{ background:var(--ink-2); border:1px solid var(--line); border-radius:16px; padding:24px 20px; text-align:center; }
+.quiz-launch-card .ql-num{ font-family:'Fraunces',serif; font-size:34px; font-weight:700; color:var(--gold); }
+.quiz-launch-card .ql-lab{ font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:0.05em; text-transform:uppercase; }
+.quiz-launch-card .ql-dd{ font-size:12.5px; color:var(--muted); margin:14px 0 18px; line-height:1.5; }
+
+.soon-pane{ text-align:center; padding:40px 20px; color:var(--muted); font-size:13px; line-height:1.6; }
 </style>
 </head>
 <body>
@@ -753,6 +823,17 @@ footer.f{ text-align:center; padding:10px 22px 50px; color:#4b5374; font-size:11
     </button>
   </div>
 
+  <div class="quick-grid" style="grid-template-columns:1fr;">
+    <button class="quick-tile" onclick="openModulesHub()" style="flex-direction:row;text-align:left;gap:14px;padding:16px 16px;">
+      <div class="qt-ic" style="margin-bottom:0;">🗂️</div>
+      <div style="flex:1;">
+        <div class="qt-tt">Course Modules</div>
+        <div class="qt-dd">10-module curriculum · video, slides & quiz per module</div>
+      </div>
+      <div style="color:var(--muted);font-size:16px;">›</div>
+    </button>
+  </div>
+
   <div class="card" id="classJoinCard">
     <div class="card-title-row">
       <div class="card-title">Class Join</div>
@@ -850,6 +931,34 @@ footer.f{ text-align:center; padding:10px 22px 50px; color:#4b5374; font-size:11
     <div class="sub-title" id="quizStageTitle">Quiz</div>
   </div>
   <div class="quiz-stage" id="quizStageBody"></div>
+</div>
+
+<!-- ============ VIEW: MODULES HUB ============ -->
+<div class="view" id="view-modules-hub">
+  <div class="sub-topbar">
+    <div class="back-btn" onclick="closeModulesHub()">←</div>
+    <div class="sub-title">Course Modules</div>
+  </div>
+  <div class="quiz-intro">
+    <p style="color:var(--muted);font-size:13px;line-height:1.55;">The full CPHQ curriculum, delivered as 10 modules. Each module unlocks its recorded video sessions, slide deck, and a scored practice quiz once it goes live.</p>
+  </div>
+  <div class="module-list" id="moduleList"></div>
+</div>
+
+<!-- ============ VIEW: MODULE DETAIL ============ -->
+<div class="view" id="view-module-detail">
+  <div class="sub-topbar">
+    <div class="back-btn" onclick="closeModuleDetail()">←</div>
+    <div class="sub-title" id="moduleDetailTitle">Module</div>
+  </div>
+  <div class="module-tabs">
+    <div class="m-tab" id="mtab-video" onclick="showModuleTab('video')">🎥 Videos</div>
+    <div class="m-tab" id="mtab-slides" onclick="showModuleTab('slides')">📑 Slides</div>
+    <div class="m-tab" id="mtab-quiz" onclick="showModuleTab('quiz')">📝 Quiz</div>
+  </div>
+  <div class="m-pane" id="mpane-video"></div>
+  <div class="m-pane" id="mpane-slides"></div>
+  <div class="m-pane" id="mpane-quiz"></div>
 </div>
 
 <!-- ============ MODAL: LOGIN ============ -->
@@ -2921,8 +3030,8 @@ function backToChapterList(){
   showOnlyView('view-study-list');
 }
 
-// ---------------- Practice Quiz navigation ----------------
-let quizState = { questions: [], idx: 0, score: 0, answered: false, categoryLabel: '' };
+// ---------------- Practice Quiz navigation (generic engine) ----------------
+let quizState = { questions: [], idx: 0, score: 0, answered: false, categoryLabel: '', returnView: 'view-quiz-list', returnTab: null, sourcePool: [] };
 
 function openQuiz(){
   renderQuizCategories();
@@ -2972,16 +3081,37 @@ function shuffleArray(arr){
   }
   return a;
 }
-function startQuiz(categoryName, label){
-  let pool = categoryName ? QUIZ_QUESTIONS.filter(q=>q.category===categoryName) : QUIZ_QUESTIONS;
-  pool = shuffleArray(pool);
-  quizState = { questions: pool, idx: 0, score: 0, answered: false, categoryLabel: label };
+
+// Generic pool-based quiz launcher — used by both the legacy Practice Quiz
+// and the per-module quizzes under Course Modules.
+function startQuizPool(pool, label, opts){
+  opts = opts || {};
+  quizState = {
+    questions: shuffleArray(pool),
+    idx: 0,
+    score: 0,
+    answered: false,
+    categoryLabel: label,
+    returnView: opts.returnView || 'view-quiz-list',
+    returnTab: opts.returnTab || null,
+    sourcePool: pool
+  };
   document.getElementById('quizStageTitle').textContent = label;
   showOnlyView('view-quiz-stage');
   renderQuizQuestion();
 }
+
+function startQuiz(categoryName, label){
+  let pool = categoryName ? QUIZ_QUESTIONS.filter(q=>q.category===categoryName) : QUIZ_QUESTIONS;
+  startQuizPool(pool, label, {returnView:'view-quiz-list'});
+}
 function exitQuizStage(){
-  showOnlyView('view-quiz-list');
+  if(quizState.returnView === 'view-module-detail'){
+    showOnlyView('view-module-detail');
+    showModuleTab(quizState.returnTab || 'video');
+  } else {
+    showOnlyView(quizState.returnView || 'view-quiz-list');
+  }
 }
 function renderQuizQuestion(){
   const body = document.getElementById('quizStageBody');
@@ -3036,6 +3166,7 @@ function renderQuizResult(){
   const total = quizState.questions.length;
   const pct = total ? Math.round((quizState.score/total)*100) : 0;
   const pass = pct >= 70;
+  const backLabel = (quizState.returnView === 'view-module-detail') ? 'Back to Module' : 'Categories';
   body.innerHTML = `
     <div class="quiz-result">
       <div class="score">${pct}%</div>
@@ -3043,10 +3174,171 @@ function renderQuizResult(){
       <div class="verdict ${pass ? 'pass' : 'fail'}">${pass ? '✓ Strong performance' : '↻ Keep practicing'}</div>
     </div>
     <div style="display:flex;gap:10px;padding:0 0 10px;">
-      <button class="btn btn-teal" style="width:auto;flex:1;" onclick="startQuiz(${quizState.categoryLabel==='Full Mixed Set' ? 'null' : JSON.stringify(quizState.questions[0]?.category)}, '${quizState.categoryLabel.replace(/'/g,"\\'")}')">Retry</button>
-      <button class="btn btn-ghost" style="width:auto;flex:1;" onclick="exitQuizStage()">Categories</button>
+      <button class="btn btn-teal" style="width:auto;flex:1;" onclick="retryQuizPool()">Retry</button>
+      <button class="btn btn-ghost" style="width:auto;flex:1;" onclick="exitQuizStage()">${backLabel}</button>
     </div>
   `;
+}
+function retryQuizPool(){
+  startQuizPool(quizState.sourcePool, quizState.categoryLabel, {returnView: quizState.returnView, returnTab: quizState.returnTab});
+}
+
+// ================================================================
+// COURSE MODULES — Modules Hub (10-module curriculum)
+// Real content lives in /data/module-N.js, loaded as <script> tags below.
+// Each file does: window.MODULE_DATA[N] = { title, subtitle, blurb, videos, slidesId, quiz }
+// Modules with no data file yet render as "Coming Soon" automatically.
+// ================================================================
+window.MODULE_DATA = window.MODULE_DATA || {};
+const TOTAL_MODULES = 10;
+let currentModuleId = null;
+let currentModuleTab = 'video';
+const openVideoRows = {};
+
+function openModulesHub(){
+  renderModuleList();
+  showOnlyView('view-modules-hub');
+}
+function closeModulesHub(){
+  showOnlyView('view-dash');
+}
+function renderModuleList(){
+  const list = document.getElementById('moduleList');
+  list.innerHTML = '';
+  for(let i=1; i<=TOTAL_MODULES; i++){
+    const data = window.MODULE_DATA[i];
+    const card = document.createElement('div');
+    if(data){
+      card.className = 'module-card';
+      card.onclick = ()=> openModuleDetail(i);
+      card.innerHTML = `
+        <div class="m-num">${i}</div>
+        <div class="m-body">
+          <div class="m-title">${data.title}${data.subtitle ? ' — ' + data.subtitle : ''}</div>
+          <div class="m-sub">${data.blurb || ''}</div>
+        </div>
+        <div class="m-tag live">Live</div>
+      `;
+    } else {
+      card.className = 'module-card soon';
+      card.innerHTML = `
+        <div class="m-num">${i}</div>
+        <div class="m-body">
+          <div class="m-title">Module ${i}</div>
+          <div class="m-sub">Video, slides & quiz will appear here once uploaded.</div>
+        </div>
+        <div class="m-tag soon">Soon</div>
+      `;
+    }
+    list.appendChild(card);
+  }
+}
+
+function openModuleDetail(id){
+  currentModuleId = id;
+  const data = window.MODULE_DATA[id];
+  document.getElementById('moduleDetailTitle').textContent = data ? `Module ${id}` : `Module ${id}`;
+  showOnlyView('view-module-detail');
+  showModuleTab('video');
+}
+function closeModuleDetail(){
+  showOnlyView('view-modules-hub');
+}
+
+function showModuleTab(tab){
+  currentModuleTab = tab;
+  ['video','slides','quiz'].forEach(t=>{
+    document.getElementById('mtab-'+t).classList.toggle('active', t===tab);
+    document.getElementById('mpane-'+t).classList.toggle('active', t===tab);
+  });
+  const data = window.MODULE_DATA[currentModuleId];
+  if(!data){
+    document.getElementById('mpane-'+tab).innerHTML = `<div class="soon-pane">This module hasn't been uploaded yet.<br>Check back soon.</div>`;
+    return;
+  }
+  if(tab === 'video') renderModuleVideoPane(data);
+  if(tab === 'slides') renderModuleSlidesPane(data);
+  if(tab === 'quiz') renderModuleQuizPane(data);
+}
+
+function renderModuleVideoPane(data){
+  const pane = document.getElementById('mpane-video');
+  if(!data.videos || !data.videos.length){
+    pane.innerHTML = `<div class="soon-pane">Video sessions for this module haven't been uploaded yet.</div>`;
+    return;
+  }
+  let html = '';
+  data.videos.forEach((v, idx)=>{
+    html += `
+      <div class="video-row" id="vrow-${idx}">
+        <div class="video-row-head" onclick="toggleVideoRow(${idx})">
+          <div class="v-ic">▶</div>
+          <div class="v-tt">${v.title || ('Part ' + (idx+1))}</div>
+          <div class="v-arrow">›</div>
+        </div>
+        <div class="video-frame-wrap" id="vframe-${idx}">
+          <div class="ar"></div>
+        </div>
+      </div>
+    `;
+  });
+  pane.innerHTML = html;
+}
+function toggleVideoRow(idx){
+  const row = document.getElementById('vrow-'+idx);
+  const isOpen = row.classList.contains('open');
+  // close any other open row's iframe to avoid multiple videos loading/playing at once
+  document.querySelectorAll('.video-row.open').forEach(r=>{
+    if(r !== row){
+      r.classList.remove('open');
+      const wrap = r.querySelector('.video-frame-wrap');
+      wrap.querySelector('.ar').innerHTML = '';
+    }
+  });
+  if(isOpen){
+    row.classList.remove('open');
+    document.getElementById('vframe-'+idx).querySelector('.ar').innerHTML = '';
+  } else {
+    row.classList.add('open');
+    const data = window.MODULE_DATA[currentModuleId];
+    const v = data.videos[idx];
+    const ar = document.getElementById('vframe-'+idx).querySelector('.ar');
+    ar.innerHTML = `<iframe src="https://drive.google.com/file/d/${v.driveId}/preview" allow="autoplay" allowfullscreen></iframe>`;
+  }
+}
+
+function renderModuleSlidesPane(data){
+  const pane = document.getElementById('mpane-slides');
+  if(!data.slidesId){
+    pane.innerHTML = `<div class="soon-pane">Slides for this module haven't been uploaded yet.</div>`;
+    return;
+  }
+  pane.innerHTML = `
+    <div class="slides-card">
+      <div class="ar"><iframe src="https://docs.google.com/presentation/d/${data.slidesId}/embed?start=false&loop=false&delayms=3000" allowfullscreen></iframe></div>
+      <div class="slides-note">Tap the expand icon inside the deck for full-screen view.</div>
+    </div>
+  `;
+}
+
+function renderModuleQuizPane(data){
+  const pane = document.getElementById('mpane-quiz');
+  if(!data.quiz || !data.quiz.length){
+    pane.innerHTML = `<div class="soon-pane">The quiz for this module hasn't been uploaded yet.</div>`;
+    return;
+  }
+  pane.innerHTML = `
+    <div class="quiz-launch-card">
+      <div class="ql-num">${data.quiz.length}</div>
+      <div class="ql-lab">Scored Questions</div>
+      <div class="ql-dd">Each question shows the correct answer and explanation immediately after you answer.</div>
+      <button class="btn btn-teal" onclick="launchModuleQuiz()">Start Module Quiz →</button>
+    </div>
+  `;
+}
+function launchModuleQuiz(){
+  const data = window.MODULE_DATA[currentModuleId];
+  startQuizPool(data.quiz, `${data.title} Quiz`, {returnView:'view-module-detail', returnTab:'quiz'});
 }
 
 // ---------------- View switching helper ----------------
@@ -3056,5 +3348,9 @@ function showOnlyView(id){
   window.scrollTo(0,0);
 }
 </script>
+
+<!-- Per-module data files — add a new <script> tag here as each module is delivered -->
+<script src="data/module-1.js"></script>
+
 </body>
 </html>
