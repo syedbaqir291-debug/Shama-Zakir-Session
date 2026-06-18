@@ -869,7 +869,7 @@ function closeLogin(){
 function attemptLogin(){
   const u = document.getElementById('userInput').value.trim().toLowerCase();
   const p = document.getElementById('passInput').value.trim();
-  const match = ROSTER.find(r => r[0] === u && r[1] === p);
+  const match = ROSTER.find(r => r[0].toLowerCase() === u && r[1] === p);
   if(match){
     document.getElementById('studentName').textContent = match[2].split(' ')[0];
     sessionStorage.setItem('cphq_logged_in', '1');
