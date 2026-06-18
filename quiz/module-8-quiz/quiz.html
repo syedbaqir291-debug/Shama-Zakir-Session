@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Population Health and Care Transitions — Quiz | CPHQ · Pro-Frontier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+<script>if(!sessionStorage.getItem('cphq_logged_in')){ window.location.href = '../../index.html'; }</script>
+
+<div class="topbar">
+  <div class="brand">
+    <a href="../../modules/module-8.html" class="back-btn" aria-label="Back to module">←</a>
+    <div class="brand-name"><b>Module 8</b> · Pro-Frontier</div>
+  </div>
+</div>
+
+<div class="page-head">
+  <div class="page-eyebrow">Module 8 of 10 · Practice Quiz</div>
+  <div class="page-title">Population Health and Care Transitions</div>
+</div>
+
+<div class="wrap" style="padding:0 22px;margin-top:10px;">
+  <div id="quizApp"></div>
+</div>
+
+<footer class="f">Pro-Frontier International Online Academy · CPHQ Module © 2026<br><span>Web Developed by <b>OMAC Developer</b> · S M Baqir</span></footer>
+
+<script src="quiz-data.js"></script>
+<script src="../../assets/quiz-engine.js"></script>
+<script>
+const QQ = (typeof MODULE_8_QUIZ_QUESTIONS !== 'undefined') ? MODULE_8_QUIZ_QUESTIONS : [];
+const QC = (typeof MODULE_8_QUIZ_CATEGORIES !== 'undefined') ? MODULE_8_QUIZ_CATEGORIES : [];
+const appEl = document.getElementById('quizApp');
+if(!QQ.length){
+  appEl.innerHTML = '<div class="empty-state">📝 The quiz for this module hasn\'t been added yet — check back soon.</div>';
+} else {
+  CPHQQuiz.init({
+    containerId: 'quizApp',
+    questions: QQ,
+    categories: QC,
+    introText: 'Pick a category to start a scored practice round for this module, or take the full mixed set. Each question shows the correct answer and explanation immediately.'
+  });
+}
+</script>
+</body>
+</html>
