@@ -896,8 +896,18 @@ function logout(){
 
 function toggleRoster(){
   const panel = document.getElementById('rosterPanel');
-  panel.classList.toggle('show');
-  if(panel.classList.contains('show') && panel.dataset.built !== '1'){
+  if(panel.classList.contains('show')){
+    panel.classList.remove('show');
+    return;
+  }
+  const entered = prompt('Enter admin password to view roster:');
+  if(entered === null) return; // cancelled
+  if(entered !== 'OMAC@Admin2026'){
+    alert('Incorrect admin password.');
+    return;
+  }
+  panel.classList.add('show');
+  if(panel.dataset.built !== '1'){
     const grid = document.getElementById('rosterGrid');
     ROSTER.forEach(r=>{
       const row = document.createElement('div');
