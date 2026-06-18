@@ -13,4 +13,4 @@
 // the page will show a friendly "coming soon" message instead.
 // ============================================================
 
-const MODULE_2_SLIDE_URL = "";
+const MODULE_2_SLIDE_URL = "https://docs.google.com/presentation/d/14ZZOJso-MG8t-i1JJLf8cLWjwfJV3qKH/edit?usp=drive_link&ouid=113418740793299424932&rtpof=true&sd=true";
