@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Introduction to Quality &amp; Important Concepts — Slides | CPHQ · Pro-Frontier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+<div class="omac-badge">OMAC Web Developer</div>
+<script>if(!sessionStorage.getItem('cphq_logged_in')){ window.location.href = '../../index.html'; }</script>
+
+<div class="topbar">
+  <div class="brand">
+    <a href="../../modules/module-1.html" class="back-btn" aria-label="Back to module">←</a>
+    <div class="brand-name"><b>Module 1</b> · Pro-Frontier</div>
+  </div>
+</div>
+
+<div class="page-head">
+  <div class="page-eyebrow">Module 1 of 10 · Session Slides</div>
+  <div class="page-title">Introduction to Quality &amp; Important Concepts</div>
+</div>
+
+<div id="slidesArea"></div>
+
+<footer class="f">Pro-Frontier International Online Academy · CPHQ Module © 2026<br><span>Web Developed by <b>OMAC Developer</b> · S M Baqir</span></footer>
+
+<script src="slide-link.js"></script>
+<script>
+const area = document.getElementById('slidesArea');
+const RAW_URL = (typeof MODULE_1_SLIDE_URL !== 'undefined') ? MODULE_1_SLIDE_URL : '';
+if(!RAW_URL || !RAW_URL.trim()){
+  area.innerHTML = '<div class="empty-state">📑 Slides for this module haven\'t been uploaded yet — check back soon.</div>';
+} else {
+  area.innerHTML = `
+    <div class="slides-wrap" style="text-align:center;">
+      <div style="font-size:34px;margin-bottom:14px;">📑</div>
+      <a class="btn btn-primary" href="${RAW_URL}" target="_blank" rel="noopener">Open in Google Slides ↗</a>
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
