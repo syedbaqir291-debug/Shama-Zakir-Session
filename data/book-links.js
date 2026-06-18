@@ -16,7 +16,7 @@
 // ================================================================
 
 // Janet Brown — Healthcare Quality Handbook, 30th Edition
-const BOOK_JANET_BROWN_URL = "";
+const BOOK_JANET_BROWN_URL = "https://drive.google.com/file/d/114RrJuMEvRotht0TD06J1ktNCZTU6AOn/view?usp=drivesdk";
 
 // HQ Solutions for CPHQ, 5th Edition
-const BOOK_HQ_SOLUTIONS_URL = "";
+const BOOK_HQ_SOLUTIONS_URL = "https://drive.google.com/file/d/1VzXsXEzhxE2etTDdYGDQqLWlquHsZ6ax/view?usp=drivesdk";
