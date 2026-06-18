@@ -15,7 +15,7 @@
 // the page will show a friendly "coming soon" message instead.
 // ============================================================
 
-const MODULE_1_VIDEOS = [
+const MODULE_2_VIDEOS = [
   {
     "part": 1,
     "title": "Session 2.1",
